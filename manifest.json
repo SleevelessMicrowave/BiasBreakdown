@@ -11,7 +11,7 @@
     },
     "permissions": ["activeTab", "tabs"],
     "browser_action": {
-        "default_icon": "icon.png",
+        "default_icon": "icon_white.png",
         "default_title": "Bias Breakdown",
         "default_popup": "popup.html"
     }
