@@ -103,8 +103,37 @@ function biasedCheck(str) {
       var hold = score;
       if (hold == 0.33232277631759644)
       {
-        score = json.title.score;    
+        score = json.title.score;  
+        var math = score * 335 - 5;
+        score = Math.round(score * 100);
+      
+        document.getElementById("p-bias").innerHTML = score + "%";
+        document.getElementById("p-bias").style.left = String(math) + "px";
+        document.getElementById("inside").style.width = String(score) + "%";
+
+        if(score >= 0 && score<45)
+        {
+        document.getElementById("result").innerHTML = "BIASED";
+        document.getElementById("inside").style.background = "#cc0000";
+        document.getElementById("description").innerHTML = "This article's title has a low impartiality score. High amounts of bias were detected based on the title. Unable to extract full article.";
+        }
+        else if(score < 61)
+        {
+        document.getElementById("result").innerHTML = "MIXED";
+        document.getElementById("inside").style.background = "#ffe700";
+        document.getElementById("description").innerHTML = "This article's title has a mid-range impartiality score. Some amounts of bias were detected based on the title. Unable to extract full article.";
+
+        }
+        else
+        {
+        document.getElementById("result").innerHTML = "IMPARTIAL";
+        document.getElementById("inside").style.background = "#38761d";
+        document.getElementById("description").innerHTML = " This article's title has a high impartiality score. Low amounts of bias were detected based on the title. Unable to extract full article.";
+
+        }  
+        score = -1000;
       }
+      else {
       var math = score * 335 - 5;
       score = Math.round(score * 100);
       
@@ -114,17 +143,20 @@ function biasedCheck(str) {
 
       if(score >= 0 && score<45)
       {
+        document.getElementById("result").innerHTML = "BIASED";
         document.getElementById("inside").style.background = "#cc0000";
         document.getElementById("description").innerHTML = "This article has a low impartiality score. High amounts of bias were detected.";
       }
-      else if(score < 61)
+      else if(score >= 45 && score < 61)
       {
+        document.getElementById("result").innerHTML = "MIXED";
         document.getElementById("inside").style.background = "#ffe700";
         document.getElementById("description").innerHTML = "This article has a mid-range impartiality score. Some amounts of bias were detected.";
 
       }
-      else
+      else if (score>= 61)
       {
+        document.getElementById("result").innerHTML = "IMPARTIAL";
         document.getElementById("inside").style.background = "#38761d";
         document.getElementById("description").innerHTML = " This article has a high impartiality score. Low amounts of bias were detected.";
 
@@ -132,7 +164,7 @@ function biasedCheck(str) {
 
     }
     // else print error message to user
-
+  }
   };
   var output = JSON.stringify({
     "url": url1,
