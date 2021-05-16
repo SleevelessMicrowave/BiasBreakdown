@@ -90,7 +90,7 @@ function biasedCheck(str) {
 
   //chrome.extension.getBackgroundPage().console.log(arguments);
   var xhrTwo = new XMLHttpRequest();
-  var url = "http://107a1ee4efce.ngrok.io/fakebox/check";
+  var url = "http://a9b73a0116b9.ngrok.io/fakebox/check";
   xhrTwo.open("POST", url, true);
   xhrTwo.setRequestHeader("Content-Type", "application/json");
   xhrTwo.onreadystatechange = function () {
